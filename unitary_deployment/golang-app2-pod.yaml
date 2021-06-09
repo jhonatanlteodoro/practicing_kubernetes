@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: golang-pod2
+  labels:
+    name: golang-app
+spec:
+  containers:
+  - name: golang-app2
+    image: jhonatanlteodoro/go_app2:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    ports:
+      - containerPort: 8080
