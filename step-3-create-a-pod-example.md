@@ -1,13 +1,27 @@
-## Creating a simple deployment for our apps
-
-
--# yaml definition here!!!
-
-
-## Mande o kubernetes fazer o deploy to seu pod
+## Mande o kubernetes fazer o deploy do seu pod
 
 ### Deploy python app
 1º realize o deploy no k8s
+
+*python-app-pod.yaml :*
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: python-pod
+  labels:
+    name: python-app
+spec:
+  containers:
+  - name: python-app
+    image: jhonatanlteodoro/app_python:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    ports:
+      - containerPort: 5000
+```
 ```bash
 $ kubectl apply -f python-app-pod.yaml
 ```
@@ -21,6 +35,26 @@ $ curl localhost:5000 #check if the server is ok
 
 ### Deploy golang app 1
 1º realize o deploy no k8s
+
+*golang-app1-pod.yaml :*
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: golang-pod1
+  labels:
+    name: golang-app
+spec:
+  containers:
+  - name: golang-app1
+    image: jhonatanlteodoro/go_app1:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    ports:
+      - containerPort: 8080
+```
 ```bash
 $ kubectl apply -f golang-app1-pod.yaml
 ```
@@ -34,6 +68,27 @@ $ curl localhost:8080 #check if the server is ok
 
 ### Deploy golang app 2
 1º realize o deploy no k8s
+
+*golang-app2-pod.yaml :*
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: golang-pod2
+  labels:
+    name: golang-app
+spec:
+  containers:
+  - name: golang-app2
+    image: jhonatanlteodoro/go_app2:latest
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    ports:
+      - containerPort: 8080
+
+```
 ```bash
 $ kubectl apply -f golang-app2-pod.yaml
 ```
