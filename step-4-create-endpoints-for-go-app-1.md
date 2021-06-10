@@ -1,3 +1,8 @@
+# Modify your go app 1 
+
+## Endpoints to read and write on some file
+### Algo como isso:
+```go
 package main
 
 import (
@@ -90,7 +95,7 @@ func ReadRequestJsonFileHandler(rw http.ResponseWriter, r *http.Request) {
 func WriteRequestJsonFileHandler(rw http.ResponseWriter, r *http.Request) {
 	err := WriteRequestToFile(GetFileName())
 	rw.Header().Set("Content-type", "application/json")
-
+	
 	if err != nil {
 		rw.WriteHeader(http.StatusNoContent)
 		rw.Write(
@@ -110,3 +115,6 @@ func main() {
 	http.HandleFunc("/write", WriteRequestJsonFileHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
+```
+
+## Endpoints to use as helthcheck

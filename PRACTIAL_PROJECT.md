@@ -15,7 +15,7 @@
   *  Simple db setup that should provide a small table to read and write content for some apps inside out cluster
 
 
-## 2 APPS
+## 3 APPS
 * Golang APP
   - Requirements
     *  Namespace default
