@@ -117,4 +117,22 @@ func main() {
 }
 ```
 
-## Endpoints to use as helthcheck
+## Endpoint to use as helthcheck
+
+### Algo como isso
+```go
+func HelthCheckHandler(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Set("Content-type", "application/json")
+	rw.WriteHeader(http.StatusOK)
+	rw.Write(
+		[]byte(`{"status": "Ok"}`),
+	)
+}
+
+func main() {
+	...
+    ...
+	http.HandleFunc("/ready", HelthCheckHandler)
+	...
+}
+```

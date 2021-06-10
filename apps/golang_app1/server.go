@@ -92,7 +92,7 @@ func WriteRequestJsonFileHandler(rw http.ResponseWriter, r *http.Request) {
 	rw.Header().Set("Content-type", "application/json")
 
 	if err != nil {
-		rw.WriteHeader(http.StatusNoContent)
+		rw.WriteHeader(http.StatusBadRequest)
 		rw.Write(
 			[]byte(`{"request_status": "not created"}`),
 		)
@@ -105,8 +105,17 @@ func WriteRequestJsonFileHandler(rw http.ResponseWriter, r *http.Request) {
 	)
 }
 
+func HelthCheckHandler(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Set("Content-type", "application/json")
+	rw.WriteHeader(http.StatusOK)
+	rw.Write(
+		[]byte(`{"status": "Ok"}`),
+	)
+}
+
 func main() {
 	http.HandleFunc("/read", ReadRequestJsonFileHandler)
 	http.HandleFunc("/write", WriteRequestJsonFileHandler)
+	http.HandleFunc("/ready", HelthCheckHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
