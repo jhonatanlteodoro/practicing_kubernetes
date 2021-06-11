@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: golang-pod1
+  labels:
+    name: golang-app
+spec:
+  containers:
+  - name: golang-app1
+    image: jhonatanlteodoro/go_app1:latest
+    env:
+    - name: REQUEST_FILE_NAME
+      value: "/var/goapp1/upa_cavalinho.json"
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "200m"
+    ports:
+      - containerPort: 8080
+
+    volumeMounts:
+      - mountPath: "/var/goapp1"
+        name: local-pv
+  volumes:
+    - name: local-pv
+      persistentVolumeClaim:
+        claimName: local-pvc
