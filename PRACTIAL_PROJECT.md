@@ -7,13 +7,6 @@
   *  Volume to read
   *  Volume readwrite
   *  NGINX ingress controller
-  *  Proxy access to a postgresql outside the cluster network
-
-
-## PostgreSQL Outside a cluster
-- Requirements
-  *  Simple db setup that should provide a small table to read and write content for some apps inside out cluster
-
 
 ## 3 APPS
 * Golang APP
@@ -55,3 +48,7 @@
 ## Jenkins
 - Requirements
   *  Environment production-like
+
+## PostgreSQL
+- Requirements
+  *  Simple db setup that should provide a small table to read and write content for some apps

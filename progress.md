@@ -26,3 +26,12 @@
 
 ### 3º Etapa
 *Cluster :*
+* Criar um namespace chamado databases para hospedar nosso querido postgresql
+* Criar um volume para read/write para o postgresql
+* Criar um volume claim para usar o volume criado para o postgresql
+* Criar um config map para armazenar config do postgresql
+* Criar uma secret para armazenar a senha do postgresql
+* Criar um deployment para o postgresql
+* Criar um service para o postgresql
+
+
